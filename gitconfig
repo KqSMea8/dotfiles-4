@@ -1,0 +1,15 @@
+[user]
+	name = Jiajun Liu
+	email = iamljj@gmail.com
+[core]
+	editor = vim
+[http]
+	sslVerify = false
+	#sslCAInfo = /Users/justin/Applications/goagent/local/CA.crt
+	#proxy = 127.0.0.1:8087
+[alias]
+	co = checkout
+	st = status
+	br = branch
+	cm = commit
+	cp = cherry-pick

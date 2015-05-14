@@ -1,0 +1,5 @@
+LogLevel error
+ServerAliveInterval 30
+ServerAliveCountMax 6
+StrictHostKeyChecking no
+UserKnownHostsFile /dev/null

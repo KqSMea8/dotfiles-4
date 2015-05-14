@@ -1,0 +1,21 @@
+"hg6978
+
+loadplugins '\.(js|penta)$'
+
+set guioptions=brsT
+set hintkeys=wfrsejkghdlaiopnmc
+
+map -count -modes=n,v <C-l> <count><Pass>
+map -count -modes=c,i,n,t,v <C-a> <Pass>
+map -count -modes=c,i,n,t,v <C-c> <Pass>
+map -count -modes=c,i,n,t,v <C-v> <Pass>
+map -count -modes=c,i,t <C-v> <Pass>
+map -count -modes=c,i,t <C-x> <Pass>
+map -count -modes=n,v J <count>gT
+map -count -modes=n,v K <count>gt
+map -count -modes=n,v j -builtin <count>5j
+map -count -modes=n,v k -builtin <count>5k
+
+highlight Hint font-family: Sans; font-size: 12px; font-weight: bold; color: red; background-color: #F8F893; text-transform: uppercase;
+highlight HintElem background-color: transparent;
+highlight HintElem clear
