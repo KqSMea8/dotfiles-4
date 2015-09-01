@@ -34,6 +34,7 @@ if has("autocmd")
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ set the runtime path to include Vundle and initialize
+""" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
@@ -61,6 +62,7 @@ Bundle 'https://github.com/vim-scripts/Tagbar.git'
 Bundle 'https://github.com/vim-scripts/cscope.vim'
 
 """" colorscheme plugins
+Bundle 'https://github.com/vim-scripts/Solarized.git'
 
 """" status line plugins
 
@@ -86,6 +88,11 @@ filetype indent on
 ""    hi CursorLine cterm=none ctermbg=darkgray ctermfg=none
 ""    hi CursorColumn cterm=none ctermbg=darkgray ctermfg=none
 ""endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set cursorline
+set cursorcolumn
+""" color settings
+set t_Co=256
 set background=dark
 colorscheme solarized
 """" setting line number
