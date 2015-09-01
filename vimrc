@@ -76,25 +76,25 @@ Bundle 'https://github.com/vim-scripts/indentpython.vim.git'
 filetype plugin on
 filetype indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""" setting vim & gvim
-""if has("gui_running")
-""    set guioptions=gR
-""    set mousemodel=popup
-""    hi LineNr cterm=bold guibg=black guifg=white
-""    hi CursorLine cterm=none ctermbg=lightgray ctermfg=none
-""    hi CursorColumn cterm=none ctermbg=lightgray ctermfg=none
-""else
-""    hi LineNr cterm=bold ctermbg=black ctermfg=white
-""    hi CursorLine cterm=none ctermbg=darkgray ctermfg=none
-""    hi CursorColumn cterm=none ctermbg=darkgray ctermfg=none
-""endif
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""" color settings
+set t_Co=256
 set cursorline
 set cursorcolumn
-""" color settings
-set t_Co=256
-set background=dark
+if has("gui_running")
+    set guioptions=gR
+    set mousemodel=popup
+    set background=light
+    ""hi LineNr cterm=bold guibg=black guifg=white
+    ""hi CursorLine cterm=none ctermbg=lightgray ctermfg=none
+    ""hi CursorColumn cterm=none ctermbg=lightgray ctermfg=none
+else
+    set background=dark
+    ""hi LineNr cterm=bold ctermbg=black ctermfg=white
+    ""hi CursorLine cterm=none ctermbg=darkgray ctermfg=none
+    ""hi CursorColumn cterm=none ctermbg=darkgray ctermfg=none
+endif
 colorscheme solarized
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """" setting line number
 set number
 set numberwidth=5
