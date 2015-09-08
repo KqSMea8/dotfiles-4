@@ -28,6 +28,10 @@ syntax on
 filetype off
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" auto commands
+if has('autocmd')
+    au BufWritePre /tmp/pentadactyl.txt write! /tmp/pentadactyl-lastedit
+endif
 """ goto the last place when openning a file
 if has("autocmd")
    au BufReadPost * if line("'\"") | exe "normal! g'\"" | endif
@@ -37,49 +41,46 @@ endif
 """ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""" plugin mananger
+""" plugin mananger
 Bundle 'gmarik/vundle'
 
-"""" edit assistant plugins
+""" edit assistant plugins
 Bundle 'https://github.com/vim-scripts/AutoClose.git'
 Bundle 'https://github.com/vim-scripts/Tabular.git'
 Bundle 'https://github.com/vim-scripts/ShowTrailingWhitespace.git'
 Bundle 'https://github.com/vim-scripts/DeleteTrailingWhitespace.git'
 
-"""" syntax highlight plugins
+""" syntax highlight plugins
 Bundle 'https://github.com/vim-scripts/Markdown.git'
 
-"""" file manange plugins
+""" file manange plugins
 Bundle 'https://github.com/vim-scripts/ctrlp.vim.git'
 Bundle 'https://github.com/vim-scripts/grep.vim.git'
 Bundle 'https://github.com/vim-scripts/The-NERD-tree.git'
 
-"""" source code browse plugins
+""" source code browse plugins
 Bundle 'https://github.com/vim-scripts/taglist.vim.git'
 Bundle 'https://github.com/vim-scripts/Tagbar.git'
 Bundle 'https://github.com/vim-scripts/cscope.vim'
 
-"""" colorscheme plugins
+""" colorscheme plugins
 Bundle 'https://github.com/vim-scripts/Solarized.git'
 
-"""" status line plugins
+""" status line plugins
 
-"""" auto complete plugins
-Bundle 'https://github.com/vim-scripts/SuperTab.git'
+""" auto complete plugins
+Bundle 'Valloric/YouCompleteMe'
 
-"""" programming related plugins
+""" programming related plugins
 Bundle 'https://github.com/vim-scripts/indentpython.vim.git'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype plugin on
 filetype indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""" color settings
+""" color settings
 set t_Co=256
-set cursorline
-set cursorcolumn
 if has("gui_running")
     set guioptions=gR
     set mousemodel=popup
@@ -95,37 +96,33 @@ else
 endif
 colorscheme solarized
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""" setting line number
+""" setting line number
 set number
 set numberwidth=5
 hi MatchParen ctermbg=blue ctermfg=white
 hi VertSplit ctermbg=black ctermfg=black
-"""" setting status line
+""" setting status line
 hi StatusLine ctermfg=darkgray ctermbg=blue
 hi StatusLineNC ctermfg=black ctermbg=white
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ key mapping settings
-nmap <s-j> <c-w>j
-nmap <s-k> <c-w>k
+let mapleader="\<space>"
+nmap <s-j> <c-w>j<c-w>_
+nmap <s-k> <c-w>k<c-w>_
 nmap <s-h> <c-w>h
 nmap <s-l> <c-w>l
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" auto commands
-if has('autocmd')
-    au BufWritePre /tmp/pentadactyl.txt write! /tmp/pentadactyl-lastedit
-endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting grep plugin
 let Grep_Skip_Files = '*.bak *~ *tags'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""setting taglist plugin
+""" setting taglist plugin
 let Tlist_WinWidth=28
 let Tlist_Exit_OnlyWindow=1
 let Tlist_Use_Right_Window=1
 let Tlist_File_Fold_Auto_Close=1
 set tags+=tags,../tags,../../tags,../../../tags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""setting tagbar plugin
+""" setting tagbar plugin
 let g:tagbar_width = 28
 let g:tagbar_autoclose = 0
 let g:tagbar_sort = 0
@@ -139,6 +136,16 @@ let NERDTreeWinSize = 28
 let NERDTreeWinPos = "left"
 nmap <M-F12> <ESC>:NERDTreeToggle<RETURN>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"""setting Grep plugin
-let Grep_Skip_Files = '*.bak *~ *tags'
+""" setting YouCompleteMe plugin
+let g:ycm_global_ycm_extra_conf="~/.ycm_extra_conf.py"
+let g:ycm_confirm_extra_conf=0
+
+let g:ycm_complete_in_strings=1
+let g:ycm_complete_in_comments=1
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_collect_identifiers_from_comments_and_strings=1
+let g:ycm_autoclose_preview_window_after_completion=1
+
+let g:ycm_collect_identifiers_from_tags_files=1
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
