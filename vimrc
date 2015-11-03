@@ -107,10 +107,12 @@ hi StatusLineNC ctermfg=black ctermbg=white
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ key mapping settings
 let mapleader="\<space>"
-nmap <s-j> <c-w>j<c-w>_
-nmap <s-k> <c-w>k<c-w>_
+nmap <s-j> <c-w>j
+nmap <s-k> <c-w>k
 nmap <s-h> <c-w>h
 nmap <s-l> <c-w>l
+nmap <c-j> <c-w>j<c-w>_
+nmap <c-k> <c-w>k<c-w>_
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting grep plugin
 let Grep_Skip_Files = '*.bak *~ *tags'
@@ -134,7 +136,11 @@ inoremap <silent> <F12> :TagbarToggle<CR>
 """ setting NRED file explorer
 let NERDTreeWinSize = 28
 let NERDTreeWinPos = "left"
-nmap <M-F12> <ESC>:NERDTreeToggle<RETURN>
+
+if has('autocmd')
+    autocmd VimEnter * NERDTree
+    autocmd VimEnter * wincmd p
+endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting YouCompleteMe plugin
 let g:ycm_global_ycm_extra_conf="~/.ycm_extra_conf.py"
