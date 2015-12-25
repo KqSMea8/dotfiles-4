@@ -120,6 +120,8 @@ let Grep_Skip_Files = '*.bak *~ *tags'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ShowTrailingWhitespace plugin
 hi ShowTrailingWhitespace ctermbg=Red guibg=Red
+""" setting DeleteTrailingWhitespace plugin
+let g:DeleteTrailingWhitespace=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting taglist plugin
 let Tlist_WinWidth=28
@@ -144,6 +146,7 @@ let NERDTreeWinPos = "left"
 if has('autocmd')
     autocmd VimEnter * NERDTree
     autocmd VimEnter * wincmd p
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting YouCompleteMe plugin
