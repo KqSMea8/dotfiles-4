@@ -23,6 +23,7 @@ set backspace=indent,eol,start
 set whichwrap=b,s,<,>,[,],h,l,~
 set pastetoggle=<F9>
 set clipboard=unnamed
+set mouse=a
 
 syntax on
 filetype off
@@ -116,6 +117,9 @@ nmap <c-k> <c-w>k<c-w>_
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting grep plugin
 let Grep_Skip_Files = '*.bak *~ *tags'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" setting ShowTrailingWhitespace plugin
+hi ShowTrailingWhitespace ctermbg=Red guibg=Red
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting taglist plugin
 let Tlist_WinWidth=28
