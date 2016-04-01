@@ -143,11 +143,15 @@ inoremap <silent> <F12> :TagbarToggle<CR>
 let NERDTreeWinSize = 28
 let NERDTreeWinPos = "left"
 
+""if has('autocmd')
+""    autocmd VimEnter * NERDTree
+""    autocmd VimEnter * wincmd p
+""endif
+" exit if NERDTree is the last window
 if has('autocmd')
-    autocmd VimEnter * NERDTree
-    autocmd VimEnter * wincmd p
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 endif
+nnoremap <leader>t :NERDTree<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting YouCompleteMe plugin
 let g:ycm_global_ycm_extra_conf="~/.ycm_extra_conf.py"
@@ -160,5 +164,5 @@ let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_autoclose_preview_window_after_completion=1
 
 let g:ycm_collect_identifiers_from_tags_files=1
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
