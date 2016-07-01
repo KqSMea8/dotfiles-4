@@ -53,15 +53,14 @@ Bundle 'https://github.com/vim-scripts/ShowTrailingWhitespace.git'
 Bundle 'https://github.com/vim-scripts/DeleteTrailingWhitespace.git'
 
 """ syntax highlight plugins
-Bundle 'https://github.com/vim-scripts/Markdown.git'
+Bundle 'Yggdroot/indentLine'
 
 """ file manange plugins
+Bundle 'https://github.com/vim-scripts/The-NERD-tree.git'
 Bundle 'https://github.com/vim-scripts/ctrlp.vim.git'
 Bundle 'https://github.com/vim-scripts/grep.vim.git'
-Bundle 'https://github.com/vim-scripts/The-NERD-tree.git'
 
 """ source code browse plugins
-Bundle 'https://github.com/vim-scripts/taglist.vim.git'
 Bundle 'https://github.com/vim-scripts/Tagbar.git'
 Bundle 'https://github.com/vim-scripts/cscope.vim'
 
@@ -82,18 +81,10 @@ filetype indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ color settings
 set t_Co=256
+set background=dark
 if has("gui_running")
     set guioptions=gR
     set mousemodel=popup
-    set background=light
-    ""hi LineNr cterm=bold guibg=black guifg=white
-    ""hi CursorLine cterm=none ctermbg=lightgray ctermfg=none
-    ""hi CursorColumn cterm=none ctermbg=lightgray ctermfg=none
-else
-    set background=dark
-    ""hi LineNr cterm=bold ctermbg=black ctermfg=white
-    ""hi CursorLine cterm=none ctermbg=darkgray ctermfg=none
-    ""hi CursorColumn cterm=none ctermbg=darkgray ctermfg=none
 endif
 colorscheme solarized
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -116,19 +107,12 @@ nmap <c-j> <c-w>j<c-w>_
 nmap <c-k> <c-w>k<c-w>_
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting grep plugin
-let Grep_Skip_Files = '*.bak *~ *tags'
+let Grep_Skip_Files = '.git *.bak *~ *tags'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ShowTrailingWhitespace plugin
 hi ShowTrailingWhitespace ctermbg=Red guibg=Red
 """ setting DeleteTrailingWhitespace plugin
 let g:DeleteTrailingWhitespace=1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" setting taglist plugin
-let Tlist_WinWidth=28
-let Tlist_Exit_OnlyWindow=1
-let Tlist_Use_Right_Window=1
-let Tlist_File_Fold_Auto_Close=1
-set tags+=tags,../tags,../../tags,../../../tags
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting tagbar plugin
 let g:tagbar_width = 28
@@ -165,4 +149,9 @@ let g:ycm_autoclose_preview_window_after_completion=1
 
 let g:ycm_collect_identifiers_from_tags_files=1
 nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" setting indentLine plugin
+let g:indentLine_char='┆'
+let g:indentLine_color_term=239
+let g:indentLine_concealcursor='vc'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
