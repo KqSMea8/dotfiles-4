@@ -58,7 +58,8 @@ Bundle 'Yggdroot/indentLine'
 """ file manange plugins
 Bundle 'https://github.com/vim-scripts/The-NERD-tree.git'
 Bundle 'https://github.com/vim-scripts/ctrlp.vim.git'
-Bundle 'https://github.com/vim-scripts/grep.vim.git'
+Bundle 'https://github.com/dkprice/vim-easygrep.git'
+Bundle 'https://github.com/dyng/ctrlsf.vim'
 
 """ source code browse plugins
 Bundle 'https://github.com/vim-scripts/Tagbar.git'
@@ -106,9 +107,6 @@ nmap <s-l> <c-w>l
 nmap <c-j> <c-w>j<c-w>_
 nmap <c-k> <c-w>k<c-w>_
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" setting grep plugin
-let Grep_Skip_Files = '.git *.bak *~ *tags'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ShowTrailingWhitespace plugin
 hi ShowTrailingWhitespace ctermbg=Red guibg=Red
 """ setting DeleteTrailingWhitespace plugin
@@ -154,4 +152,24 @@ nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:indentLine_char='┆'
 let g:indentLine_color_term=239
 let g:indentLine_concealcursor='vc'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" setting grep command
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
+endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" setting ctrlp plugin"
+let g:ctrlp_user_command='ag %s -l --nocolor --nogroup --hidden
+                                 \ --ignore .git --ignore out
+                                 \ --ignore .svn --ignore .hg
+                                 \ --ignore .DS_Store -g ""'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" setting ctrlsf plugin"
+let g:ctrlsf_auto_close = 0
+let g:ctrlsf_case_sensitive = 'no'
+let g:ctrlsf_default_root = 'project'
+let g:ctrlsf_position = 'right'
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" set easygrep plugin"
+let g:EasyGrepCommand=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
