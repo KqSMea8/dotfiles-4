@@ -44,37 +44,36 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ plugin mananger
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 """ edit assistant plugins
-Bundle 'https://github.com/vim-scripts/AutoClose.git'
-Bundle 'https://github.com/vim-scripts/Tabular.git'
-Bundle 'https://github.com/vim-scripts/ShowTrailingWhitespace.git'
-Bundle 'https://github.com/vim-scripts/DeleteTrailingWhitespace.git'
+Plugin 'https://github.com/vim-scripts/AutoClose.git'
+Plugin 'https://github.com/vim-scripts/Tabular.git'
+Plugin 'https://github.com/vim-scripts/ShowTrailingWhitespace.git'
+Plugin 'https://github.com/vim-scripts/DeleteTrailingWhitespace.git'
 
 """ syntax highlight plugins
-Bundle 'Yggdroot/indentLine'
+Plugin 'Yggdroot/indentLine'
 
 """ file manange plugins
-Bundle 'https://github.com/vim-scripts/The-NERD-tree.git'
-Bundle 'https://github.com/vim-scripts/ctrlp.vim.git'
-Bundle 'https://github.com/dkprice/vim-easygrep.git'
-Bundle 'https://github.com/dyng/ctrlsf.vim'
+Plugin 'https://github.com/vim-scripts/The-NERD-tree.git'
+Plugin 'https://github.com/vim-scripts/ctrlp.vim.git'
+Plugin 'https://github.com/dyng/ctrlsf.vim'
 
 """ source code browse plugins
-Bundle 'https://github.com/vim-scripts/Tagbar.git'
-Bundle 'https://github.com/vim-scripts/cscope.vim'
+Plugin 'https://github.com/vim-scripts/Tagbar.git'
+Plugin 'https://github.com/vim-scripts/cscope.vim'
 
 """ colorscheme plugins
-Bundle 'https://github.com/vim-scripts/Solarized.git'
+Plugin 'https://github.com/vim-scripts/Solarized.git'
 
 """ status line plugins
 
 """ auto complete plugins
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 """ programming related plugins
-Bundle 'https://github.com/vim-scripts/indentpython.vim.git'
+Plugin 'https://github.com/vim-scripts/indentpython.vim.git'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype plugin on
@@ -92,10 +91,10 @@ colorscheme solarized
 """ setting line number
 set number
 set numberwidth=5
-hi MatchParen ctermbg=blue ctermfg=white
 hi VertSplit ctermbg=black ctermfg=black
+hi MatchParen ctermbg=blue ctermfg=white
 """ setting status line
-hi StatusLine ctermfg=darkgray ctermbg=blue
+hi StatusLine ctermfg=darkgray ctermbg=gray
 hi StatusLineNC ctermfg=black ctermbg=white
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ key mapping settings
@@ -169,7 +168,4 @@ let g:ctrlsf_auto_close = 0
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_default_root = 'project'
 let g:ctrlsf_position = 'right'
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" set easygrep plugin"
-let g:EasyGrepCommand=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
