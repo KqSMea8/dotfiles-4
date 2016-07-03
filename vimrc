@@ -105,6 +105,7 @@ nmap <s-h> <c-w>h
 nmap <s-l> <c-w>l
 nmap <c-j> <c-w>j<c-w>_
 nmap <c-k> <c-w>k<c-w>_
+nmap <leader>r :source ~/.vimrc<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ShowTrailingWhitespace plugin
 hi ShowTrailingWhitespace ctermbg=Red guibg=Red
@@ -165,7 +166,12 @@ let g:ctrlp_user_command='ag %s -l --nocolor --nogroup --hidden
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ctrlsf plugin"
 let g:ctrlsf_auto_close = 0
+let g:ctrlsf_winsize = '40%'
+let g:ctrlsf_position = 'right'
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_default_root = 'project'
-let g:ctrlsf_position = 'right'
+
+nnoremap <leader>o :CtrlSFToggle<CR>
+nmap <leader>f <Plug>CtrlSFCwordPath
+vmap <leader>f <Plug>CtrlSFVwordPath
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
