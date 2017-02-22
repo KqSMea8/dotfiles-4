@@ -26,6 +26,8 @@ set lazyredraw
 set pastetoggle=<F9>
 set clipboard=unnamed
 set mouse=a
+set encoding=utf-8
+set termencoding=utf-8
 
 syntax on
 filetype off
@@ -38,6 +40,11 @@ endif
 """ goto the last place when openning a file
 if has("autocmd")
    au BufReadPost * if line("'\"") | exe "normal! g'\"" | endif
+endif
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" setting grep command
+if executable('ag')
+    set grepprg=ag\ --nogroup\ --nocolor
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ set the runtime path to include Vundle and initialize
@@ -61,16 +68,16 @@ Plugin 'Yggdroot/indentLine'
 Plugin 'https://github.com/vim-scripts/The-NERD-tree.git'
 Plugin 'https://github.com/vim-scripts/ctrlp.vim.git'
 Plugin 'https://github.com/dyng/ctrlsf.vim'
-Plugin 'EasyGrep'
+Plugin 'https://github.com/rking/ag.vim'
 
 """ source code browse plugins
 Plugin 'https://github.com/vim-scripts/Tagbar.git'
-Plugin 'https://github.com/vim-scripts/cscope.vim'
 
 """ colorscheme plugins
 Plugin 'https://github.com/vim-scripts/Solarized.git'
 
 """ status line plugins
+
 
 """ auto complete plugins
 Plugin 'Valloric/YouCompleteMe'
@@ -111,9 +118,14 @@ nmap <s-h> <c-w>h
 nmap <s-l> <c-w>l
 nmap <c-j> <c-w>j<c-w>_
 nmap <c-k> <c-w>k<c-w>_
-nmap <Leader>r :source ~/.vimrc<CR>
+
 vmap <Leader>y "+y
 nmap <Leader>p "+p
+
+nnoremap <C-Tab>   :tabn<CR>
+nnoremap <C-S-Tab> :tabp<CR>
+
+nmap <Leader>r :source ~/.vimrc<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ShowTrailingWhitespace plugin
 hi ShowTrailingWhitespace ctermbg=Red guibg=Red
@@ -126,20 +138,17 @@ let g:tagbar_autoclose = 0
 let g:tagbar_sort = 0
 let g:tagbar_compact = 1
 let g:tagbar_iconchars = ['▸', '▾']
+
 nnoremap <leader>l :TagbarToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting NRED file explorer
 let NERDTreeWinSize = 28
 let NERDTreeWinPos = "left"
 
-""if has('autocmd')
-""    autocmd VimEnter * NERDTree
-""    autocmd VimEnter * wincmd p
-""endif
-" exit if NERDTree is the last window
 if has('autocmd')
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 endif
+
 nnoremap <leader>t :NERDTree<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting YouCompleteMe plugin
@@ -152,8 +161,8 @@ let g:ycm_min_num_of_chars_for_completion=2
 let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_autoclose_preview_window_after_completion=1
-
 let g:ycm_collect_identifiers_from_tags_files=1
+
 nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting indentLine plugin
@@ -161,20 +170,14 @@ let g:indentLine_char='┆'
 let g:indentLine_color_term=239
 let g:indentLine_concealcursor='vc'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" setting grep command
-if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
-endif
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ctrlp plugin"
-let g:ctrlp_user_command='ag %s -l --nocolor --nogroup --hidden
-                                 \ --ignore .git --ignore out
-                                 \ --ignore .svn --ignore .hg
-                                 \ --ignore .DS_Store -g ""'
+if executable('ag')
+    let g:ctrlp_user_command='ag %s -l --nocolor --nogroup --hidden --ignore .git --ignore .DS_Store -g ""'
+endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ctrlsf plugin"
 let g:ctrlsf_auto_close = 0
-let g:ctrlsf_winsize = '40%'
+let g:ctrlsf_winsize = '30%'
 let g:ctrlsf_position = 'right'
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_default_root = 'project'
@@ -184,10 +187,12 @@ nmap <leader>f <Plug>CtrlSFCwordPath
 vmap <leader>f <Plug>CtrlSFVwordPath
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting EasyGrep plugin
-let g:EasyGrepMode = 0               " All:0, Open Buffers:1, TrackExt:2
-let g:EasyGrepCommand = 1            " Use vimgrep:0, grepprg:1
-let g:EasyGrepRecursive  = 1         " Recursive searching
-let g:EasyGrepIgnoreCase = 1         " not ignorecase:0
-let g:EasyGrepJumpToMatch = 0        " Jump to first match
-let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
+""let g:EasyGrepMode = 0               " All:0, Open Buffers:1, TrackExt:2
+""let g:EasyGrepCommand = 1            " Use vimgrep:0, grepprg:1
+""let g:EasyGrepRecursive  = 1         " Recursive searching
+""let g:EasyGrepIgnoreCase = 1         " not ignorecase:0
+""let g:EasyGrepJumpToMatch = 0        " Jump to first match
+""let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ag_working_path_mode="r"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
