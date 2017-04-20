@@ -73,11 +73,7 @@ Plugin 'https://github.com/rking/ag.vim'
 """ source code browse plugins
 Plugin 'https://github.com/vim-scripts/Tagbar.git'
 
-""" colorscheme plugins
-Plugin 'https://github.com/vim-scripts/Solarized.git'
-
 """ status line plugins
-
 
 """ auto complete plugins
 Plugin 'Valloric/YouCompleteMe'
@@ -171,16 +167,19 @@ let g:indentLine_color_term=239
 let g:indentLine_concealcursor='vc'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ctrlp plugin"
+let g:ctrlp_working_path_mode  = 'ra'
 if executable('ag')
+    let g:ctrlp_use_caching=0
     let g:ctrlp_user_command='ag %s -l --nocolor --nogroup --hidden --ignore .git --ignore .DS_Store -g ""'
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ctrlsf plugin"
 let g:ctrlsf_auto_close = 0
 let g:ctrlsf_winsize = '30%'
-let g:ctrlsf_position = 'right'
+let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_default_root = 'project'
+let g:ctrlsf_ignore_dir = ['tests', 'doc']
 
 nnoremap <leader>o :CtrlSFToggle<CR>
 nmap <leader>f <Plug>CtrlSFCwordPath
@@ -194,5 +193,7 @@ vmap <leader>f <Plug>CtrlSFVwordPath
 ""let g:EasyGrepJumpToMatch = 0        " Jump to first match
 ""let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" setting ag plugin
 let g:ag_working_path_mode="r"
+let g:ag_prg="ag --ignore .git --ignore locale --ignore tests --vimgrep"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
