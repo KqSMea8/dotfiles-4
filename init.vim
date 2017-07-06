@@ -1,6 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ global settings
-set nocompatible
 set cursorline
 set cursorcolumn
 set ruler
@@ -29,9 +28,42 @@ set mouse=a
 set encoding=utf-8
 set termencoding=utf-8
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax on
 filetype off
+""" plugin mananger
+call plug#begin('~/.config/nvim/plugins')
 
+""" edit assistant plugins
+Plug 'https://github.com/vim-scripts/AutoClose.git'
+Plug 'https://github.com/vim-scripts/Tabular.git'
+Plug 'https://github.com/vim-scripts/ShowTrailingWhitespace.git'
+Plug 'https://github.com/vim-scripts/DeleteTrailingWhitespace.git'
+
+""" syntax highlight plugins
+Plug 'Yggdroot/indentLine'
+
+""" status line
+ Plug 'itchyny/lightline.vim'
+
+""" file manange plugins
+Plug 'https://github.com/vim-scripts/The-NERD-tree.git'
+Plug 'https://github.com/vim-scripts/ctrlp.vim.git'
+Plug 'https://github.com/dyng/ctrlsf.vim'
+Plug 'https://github.com/rking/ag.vim'
+
+""" source code browse plugins
+Plug 'https://github.com/vim-scripts/Tagbar.git'
+
+""" auto complete plugins
+Plug 'Valloric/YouCompleteMe'
+
+""" programming related plugins
+Plug 'https://github.com/vim-scripts/indentpython.vim.git'
+
+""" plugin finish
+call plug#end()
+filetype plugin indent on
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ auto commands
 if has('autocmd')
@@ -47,64 +79,11 @@ if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" set the runtime path to include Vundle and initialize
-""" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" plugin mananger
-Plugin 'gmarik/vundle'
-
-""" edit assistant plugins
-Plugin 'https://github.com/vim-scripts/AutoClose.git'
-Plugin 'https://github.com/vim-scripts/Tabular.git'
-Plugin 'https://github.com/vim-scripts/ShowTrailingWhitespace.git'
-Plugin 'https://github.com/vim-scripts/DeleteTrailingWhitespace.git'
-
-""" syntax highlight plugins
-Plugin 'Yggdroot/indentLine'
-
-""" file manange plugins
-Plugin 'https://github.com/vim-scripts/The-NERD-tree.git'
-Plugin 'https://github.com/vim-scripts/ctrlp.vim.git'
-Plugin 'https://github.com/dyng/ctrlsf.vim'
-Plugin 'https://github.com/rking/ag.vim'
-
-""" source code browse plugins
-Plugin 'https://github.com/vim-scripts/Tagbar.git'
-
-""" status line plugins
-
-""" auto complete plugins
-Plugin 'Valloric/YouCompleteMe'
-
-""" programming related plugins
-Plugin 'https://github.com/vim-scripts/indentpython.vim.git'
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype plugin on
-filetype indent on
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" color settings
-set t_Co=256
-set background=dark
-if has("gui_running")
-    set guioptions=g
-    set mousemodel=popup
-    set guifont=Monaco:h16
-    autocmd VimEnter * exe 'cd ~/Codes/github/openstack'
-endif
-colorscheme solarized
-""colorscheme darkblue
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting line number
 set number
 set numberwidth=5
 hi VertSplit ctermbg=black ctermfg=black
 hi MatchParen ctermbg=blue ctermfg=white
-""" setting status line
-hi StatusLine ctermfg=darkgray ctermbg=gray
-hi StatusLineNC ctermfg=black ctermbg=white
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ key mapping settings
 let mapleader="\<space>"
@@ -120,8 +99,6 @@ nmap <Leader>p "+p
 
 nnoremap <C-Tab>   :tabn<CR>
 nnoremap <C-S-Tab> :tabp<CR>
-
-nmap <Leader>r :source ~/.vimrc<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ShowTrailingWhitespace plugin
 hi ShowTrailingWhitespace ctermbg=Red guibg=Red
@@ -185,15 +162,18 @@ nnoremap <leader>o :CtrlSFToggle<CR>
 nmap <leader>f <Plug>CtrlSFCwordPath
 vmap <leader>f <Plug>CtrlSFVwordPath
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" setting EasyGrep plugin
-""let g:EasyGrepMode = 0               " All:0, Open Buffers:1, TrackExt:2
-""let g:EasyGrepCommand = 1            " Use vimgrep:0, grepprg:1
-""let g:EasyGrepRecursive  = 1         " Recursive searching
-""let g:EasyGrepIgnoreCase = 1         " not ignorecase:0
-""let g:EasyGrepJumpToMatch = 0        " Jump to first match
-""let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ag plugin
 let g:ag_working_path_mode="r"
 let g:ag_prg="ag --ignore .git --ignore locale --ignore tests --vimgrep"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" color settings
+set t_Co=256
+if has("gui_running")
+    set guioptions=g
+    set mousemodel=popup
+    set guifont=Monaco:h16
+    autocmd VimEnter * exe 'cd ~/Codes/github/openstack'
+endif
+set background=dark
+colorscheme solarized
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
