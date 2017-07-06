@@ -12,19 +12,16 @@ ln -f gitconfig ~/.gitconfig
 ln -f sshconfig ~/.ssh/config
 
 ## setup vim
+cp -f vimrc ~/.vimrc
+mkdir -p ~/.vim/bundle
 if type nvim &>/dev/null; then
-    mkdir -p ~/.config
-    cp -r nvim ~/.config/
-    nvim -c 'PlugInstall' -c ':qa'
-
+    mkdir -p ~/.config/nvim
+    ln -s ~/.vimrc ~/.config/nvim/init.vim
+    cp -r colors autoload ~/.config/nvim/
+    nvim +PlugInstall +qall
 elif type vim | grep -v nvim &>/dev/null; then
-    mkdir -p ~/.vim
-    cp -r vim/* ~/.vim/
-    mkdir -p ~/.vim/bundle
-    if [ ! -d ~/.vim/bundle/vundle ]; then
-        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle
-    fi
-    vim -c 'PluginInstall' -c ':qa'
+    cp -r colors autoload ~/.vim/
+    vim +PlugInstall +qall
 fi
 
 echo "Done!"
