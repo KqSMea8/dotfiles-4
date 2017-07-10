@@ -3,6 +3,8 @@ ServerAliveInterval 30
 ServerAliveCountMax 6
 StrictHostKeyChecking no
 UserKnownHostsFile /dev/null
+Compression yes
+CompressionLevel 7
 
 Host *
     ControlMaster auto
