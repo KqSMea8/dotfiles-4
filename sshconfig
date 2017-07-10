@@ -3,3 +3,8 @@ ServerAliveInterval 30
 ServerAliveCountMax 6
 StrictHostKeyChecking no
 UserKnownHostsFile /dev/null
+
+Host *
+    ControlMaster auto
+    ControlPath ~/.ssh/ssh-%r-%h-%p
+    ControlPersist 600
