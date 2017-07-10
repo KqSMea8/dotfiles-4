@@ -117,6 +117,7 @@ nnoremap <C-S-Tab> :tabp<CR>
 hi ShowTrailingWhitespace ctermbg=Red guibg=Red
 """ setting DeleteTrailingWhitespace plugin
 let g:DeleteTrailingWhitespace=1
+let g:DeleteTrailingWhitespace_Action = 'delete'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting tagbar plugin
 let g:tagbar_width = 28
