@@ -1,4 +1,41 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" plugin mananger
+filetype off
+call plug#begin('~/.vim/favorites')
+
+Plug 'tpope/vim-sensible'
+
+""" edit assistant plugins
+Plug 'https://github.com/vim-scripts/AutoClose.git'
+Plug 'https://github.com/vim-scripts/Tabular.git'
+Plug 'https://github.com/vim-scripts/ShowTrailingWhitespace.git'
+Plug 'https://github.com/vim-scripts/DeleteTrailingWhitespace.git'
+
+""" syntax highlight plugins
+Plug 'Yggdroot/indentLine'
+
+""" status line
+ Plug 'itchyny/lightline.vim'
+
+""" file manange plugins
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'https://github.com/vim-scripts/ctrlp.vim.git'
+Plug 'https://github.com/dyng/ctrlsf.vim'
+Plug 'https://github.com/rking/ag.vim'
+
+""" source code browse plugins
+Plug 'https://github.com/vim-scripts/Tagbar.git'
+
+""" auto complete plugins
+Plug 'Valloric/YouCompleteMe'
+
+""" programming related plugins
+Plug 'https://github.com/vim-scripts/indentpython.vim.git'
+
+""" plugin finish
+call plug#end()
+filetype plugin indent on
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ global settings
 set cursorline
 set cursorcolumn
@@ -27,43 +64,19 @@ set clipboard=unnamed
 set mouse=a
 set encoding=utf-8
 set termencoding=utf-8
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" color settings
 syntax on
-filetype off
-""" plugin mananger
-call plug#begin('~/.config/nvim/plugins')
+set t_Co=256
 
-""" edit assistant plugins
-Plug 'https://github.com/vim-scripts/AutoClose.git'
-Plug 'https://github.com/vim-scripts/Tabular.git'
-Plug 'https://github.com/vim-scripts/ShowTrailingWhitespace.git'
-Plug 'https://github.com/vim-scripts/DeleteTrailingWhitespace.git'
-
-""" syntax highlight plugins
-Plug 'Yggdroot/indentLine'
-
-""" status line
- Plug 'itchyny/lightline.vim'
-
-""" file manange plugins
-Plug 'https://github.com/vim-scripts/The-NERD-tree.git'
-Plug 'https://github.com/vim-scripts/ctrlp.vim.git'
-Plug 'https://github.com/dyng/ctrlsf.vim'
-Plug 'https://github.com/rking/ag.vim'
-
-""" source code browse plugins
-Plug 'https://github.com/vim-scripts/Tagbar.git'
-
-""" auto complete plugins
-Plug 'Valloric/YouCompleteMe'
-
-""" programming related plugins
-Plug 'https://github.com/vim-scripts/indentpython.vim.git'
-
-""" plugin finish
-call plug#end()
-filetype plugin indent on
+if has("gui_running")
+    set guioptions=g
+    set mousemodel=popup
+    set guifont=Monaco:h16
+    autocmd VimEnter * exe 'cd ~/Codes/github/openstack'
+endif
+set background=dark
+colorscheme solarized
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ auto commands
 if has('autocmd')
@@ -122,7 +135,7 @@ if has('autocmd')
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 endif
 
-nnoremap <leader>t :NERDTree<CR>
+nnoremap <leader>t :NERDTreeToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting YouCompleteMe plugin
 let g:ycm_global_ycm_extra_conf="~/.ycm_extra_conf.py"
@@ -156,7 +169,7 @@ let g:ctrlsf_winsize = '30%'
 let g:ctrlsf_position = 'bottom'
 let g:ctrlsf_case_sensitive = 'no'
 let g:ctrlsf_default_root = 'project'
-let g:ctrlsf_ignore_dir = ['tests', 'doc']
+let g:ctrlsf_ignore_dir = ['tests', 'doc', '.git']
 
 nnoremap <leader>o :CtrlSFToggle<CR>
 nmap <leader>f <Plug>CtrlSFCwordPath
@@ -165,15 +178,4 @@ vmap <leader>f <Plug>CtrlSFVwordPath
 """ setting ag plugin
 let g:ag_working_path_mode="r"
 let g:ag_prg="ag --ignore .git --ignore locale --ignore tests --vimgrep"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" color settings
-set t_Co=256
-if has("gui_running")
-    set guioptions=g
-    set mousemodel=popup
-    set guifont=Monaco:h16
-    autocmd VimEnter * exe 'cd ~/Codes/github/openstack'
-endif
-set background=dark
-colorscheme solarized
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

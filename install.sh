@@ -12,11 +12,12 @@ ln -f gitconfig ~/.gitconfig
 ln -f sshconfig ~/.ssh/config
 
 ## setup vim
-cp -f vimrc ~/.vimrc
-mkdir -p ~/.vim/bundle
+ln -f vimrc ~/.vimrc
+mkdir -p ~/.vim/favorites
+
 if type nvim &>/dev/null; then
     mkdir -p ~/.config/nvim
-    ln -s ~/.vimrc ~/.config/nvim/init.vim
+    ln -f ~/.vimrc ~/.config/nvim/init.vim
     cp -r colors autoload ~/.config/nvim/
     nvim +PlugInstall +qall
 elif type vim | grep -v nvim &>/dev/null; then
