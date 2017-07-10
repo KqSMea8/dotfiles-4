@@ -1,15 +1,17 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ plugin mananger
+set nocompatible
 filetype off
+
 call plug#begin('~/.vim/favorites')
 
 Plug 'tpope/vim-sensible'
 
 """ edit assistant plugins
-Plug 'https://github.com/vim-scripts/AutoClose.git'
-Plug 'https://github.com/vim-scripts/Tabular.git'
-Plug 'https://github.com/vim-scripts/ShowTrailingWhitespace.git'
-Plug 'https://github.com/vim-scripts/DeleteTrailingWhitespace.git'
+Plug 'AutoClose'
+Plug 'Tabular'
+Plug 'ShowTrailingWhitespace'
+Plug 'DeleteTrailingWhitespace'
 
 """ syntax highlight plugins
 Plug 'Yggdroot/indentLine'
@@ -19,18 +21,18 @@ Plug 'Yggdroot/indentLine'
 
 """ file manange plugins
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'https://github.com/vim-scripts/ctrlp.vim.git'
-Plug 'https://github.com/dyng/ctrlsf.vim'
-Plug 'https://github.com/rking/ag.vim'
+Plug 'ctrlp.vim'
+Plug 'dyng/ctrlsf.vim'
+Plug 'rking/ag.vim'
 
 """ source code browse plugins
-Plug 'https://github.com/vim-scripts/Tagbar.git'
+Plug 'Tagbar'
 
 """ auto complete plugins
 Plug 'Valloric/YouCompleteMe'
 
 """ programming related plugins
-Plug 'https://github.com/vim-scripts/indentpython.vim.git'
+Plug 'indentpython.vim'
 
 """ plugin finish
 call plug#end()
