@@ -20,7 +20,7 @@ Plug 'Yggdroot/indentLine'
  Plug 'itchyny/lightline.vim'
 
 """ file manange plugins
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTree' }
 Plug 'ctrlp.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'rking/ag.vim'
@@ -74,7 +74,7 @@ set t_Co=256
 if has("gui_running")
     set guioptions=g
     set mousemodel=popup
-    set guifont=Monaco:h16
+    set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h16'
     autocmd VimEnter * exe 'cd ~/Codes/github/openstack'
 endif
 set background=dark
@@ -138,7 +138,7 @@ if has('autocmd')
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 endif
 
-nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>t :NERDTree<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting YouCompleteMe plugin
 let g:ycm_global_ycm_extra_conf="~/.ycm_extra_conf.py"
@@ -181,4 +181,10 @@ vmap <leader>f <Plug>CtrlSFVwordPath
 """ setting ag plugin
 let g:ag_working_path_mode="r"
 let g:ag_prg="ag --ignore .git --ignore locale --ignore tests --vimgrep"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" setting lightline plugin
+let g:lightline = {
+        \ 'separator': { 'left': '', 'right': '' },
+        \ 'subseparator': { 'left': '', 'right': '' }
+        \ }
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
