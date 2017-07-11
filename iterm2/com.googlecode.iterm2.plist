@@ -580,7 +580,7 @@
 	<key>NSFontPanelAttributes</key>
 	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~</string>
+	<string>~/Downloads</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -620,17 +620,17 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>511 37 644 77 0 0 1440 877 </string>
+	<string>1046 718 644 77 0 0 1920 1057 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>269 139 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>367 184 918 495 0 0 1440 877 </string>
+	<string>1021 303 918 495 0 0 1920 1057 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 293 592 584 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1440 900 0 0 1440 877 </string>
+	<string>557 338 910 657 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>3 338 710 537 0 0 1440 877 </string>
+	<string>5 373 910 657 0 0 1920 1057 </string>
 	<key>NeverWarnAboutShortLivedSessions_5AA714CA-E3C8-4894-9A93-A020C3EC9E8A</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_5AA714CA-E3C8-4894-9A93-A020C3EC9E8A_selection</key>
@@ -1215,7 +1215,7 @@
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
-			<string>DejaVuSansMonoForPowerline 15</string>
+			<string>MesloLGS-RegularForPowerline 15</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
