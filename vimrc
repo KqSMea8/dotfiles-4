@@ -8,7 +8,7 @@ call plug#begin('~/.vim/favorites')
 Plug 'tpope/vim-sensible'
 
 """ edit assistant plugins
-Plug 'AutoClose'
+Plug 'Raimondi/delimitMate'
 Plug 'Tabular'
 Plug 'ShowTrailingWhitespace'
 Plug 'DeleteTrailingWhitespace'
@@ -114,6 +114,8 @@ nmap <Leader>p "+p
 
 nnoremap <C-Tab>   :tabn<CR>
 nnoremap <C-S-Tab> :tabp<CR>
+inoremap <C-Tab>   <Esc>:tabn<CR>
+inoremap <C-S-Tab> <Esc>:tabp<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ShowTrailingWhitespace plugin
 hi ShowTrailingWhitespace ctermbg=Red guibg=Red
