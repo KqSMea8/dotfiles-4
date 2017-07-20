@@ -17,5 +17,5 @@ Host *
     ControlMaster auto
     ControlPath ~/.ssh/ssh-%r-%h-%p
     ControlPersist 600
-    RemoteForward 2224 127.0.0.1:2224
+    RemoteForward 20024 127.0.0.1:2224
     KexAlgorithms +diffie-hellman-group1-sha1
