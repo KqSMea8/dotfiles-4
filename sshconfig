@@ -12,10 +12,11 @@ IdentityFile ~/.ssh/portal.key
 IdentityFile ~/.ssh/devops.key
 IdentityFile ~/.ssh/mirror.key
 
+Host review.polex.io
+    KexAlgorithms +diffie-hellman-group1-sha1
 
 Host *
     ControlMaster auto
-    ControlPath ~/.ssh/ssh-%r-%h-%p
+    ControlPath ~/.ssh/master-%r@%h:%p
     ControlPersist 600
     RemoteForward 20024 127.0.0.1:2224
-    KexAlgorithms +diffie-hellman-group1-sha1

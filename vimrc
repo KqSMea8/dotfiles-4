@@ -74,11 +74,16 @@ set t_Co=256
 if has("gui_running")
     set guioptions=g
     set mousemodel=popup
-    set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h16'
+    set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h18'
     autocmd VimEnter * exe 'cd ~/Codes/github/openstack'
 endif
 set background=dark
 colorscheme solarized
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" nvim settings
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ auto commands
 if has('autocmd')
@@ -135,6 +140,7 @@ nnoremap <leader>l :TagbarToggle<CR>
 """ setting NRED file explorer
 let NERDTreeWinSize = 28
 let NERDTreeWinPos = "left"
+let NERDTreeIgnore = ['\.pyc$']
 
 if has('autocmd')
     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
@@ -162,6 +168,7 @@ let g:indentLine_color_term=239
 let g:indentLine_concealcursor='vc'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ctrlp plugin"
+let g:ctrlp_regexp = 1
 let g:ctrlp_working_path_mode  = 'ra'
 if executable('ag')
     let g:ctrlp_use_caching=0
