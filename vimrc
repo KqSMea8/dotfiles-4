@@ -50,6 +50,7 @@ set cindent
 set showcmd
 set hlsearch
 set autoread
+
 set autoindent
 set linebreak
 set smartindent
@@ -59,13 +60,21 @@ set tabstop=8
 set shiftwidth=4
 set backspace=indent,eol,start
 set whichwrap=b,s,<,>,[,],h,l,~
+
+set title
 set wildmenu
+set ttyfast
 set lazyredraw
+
 set pastetoggle=<F9>
 set clipboard=unnamed
 set mouse=a
+
 set encoding=utf-8
 set termencoding=utf-8
+
+set noerrorbells
+set novisualbell
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ color settings
 syntax on
@@ -192,8 +201,6 @@ let g:ag_working_path_mode="r"
 let g:ag_prg="ag --ignore .git --ignore locale --ignore tests --vimgrep"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting lightline plugin
-let g:lightline = {
-        \ 'separator': { 'left': '', 'right': '' },
-        \ 'subseparator': { 'left': '', 'right': '' }
-        \ }
+set laststatus=2
+let g:lightline = {'colorscheme': 'solarized'}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
