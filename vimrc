@@ -9,7 +9,6 @@ Plug 'tpope/vim-sensible'
 
 """ edit assistant plugins
 Plug 'Raimondi/delimitMate'
-Plug 'Tabular'
 Plug 'ShowTrailingWhitespace'
 Plug 'DeleteTrailingWhitespace'
 
@@ -32,7 +31,6 @@ Plug 'Tagbar'
 Plug 'Valloric/YouCompleteMe'
 
 """ programming related plugins
-Plug 'indentpython.vim'
 
 """ plugin finish
 call plug#end()
@@ -143,6 +141,33 @@ let g:tagbar_autoclose = 0
 let g:tagbar_sort = 0
 let g:tagbar_compact = 1
 let g:tagbar_iconchars = ['▸', '▾']
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
 
 nnoremap <leader>l :TagbarToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -163,7 +188,7 @@ let g:ycm_confirm_extra_conf=0
 
 let g:ycm_complete_in_strings=1
 let g:ycm_complete_in_comments=1
-let g:ycm_min_num_of_chars_for_completion=2
+let g:ycm_min_num_of_chars_for_completion=1
 let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_collect_identifiers_from_comments_and_strings=1
 let g:ycm_autoclose_preview_window_after_completion=1
@@ -181,7 +206,7 @@ let g:ctrlp_regexp = 1
 let g:ctrlp_working_path_mode  = 'ra'
 if executable('ag')
     let g:ctrlp_use_caching=0
-    let g:ctrlp_user_command='ag %s -l --nocolor --nogroup --hidden --ignore .git --ignore .DS_Store -g ""'
+    let g:ctrlp_user_command='ag %s -l --depth 5 --nocolor --nogroup --hidden --ignore .git --ignore .DS_Store -g ""'
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ctrlsf plugin"
