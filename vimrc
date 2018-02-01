@@ -32,6 +32,8 @@ Plug 'Valloric/YouCompleteMe'
 
 """ programming related plugins
 
+Plug 'christoomey/vim-tmux-navigator'
+
 """ plugin finish
 call plug#end()
 filetype plugin indent on
@@ -77,19 +79,30 @@ set novisualbell
 """ color settings
 syntax on
 set t_Co=256
+set background=dark
+colorscheme solarized
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
 
 if has("gui_running")
     set guioptions=g
     set mousemodel=popup
-    set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h18'
-    autocmd VimEnter * exe 'cd ~/Codes/github/openstack'
-endif
-set background=dark
-colorscheme solarized
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" nvim settings
-if has('nvim')
-    tnoremap <Esc> <C-\><C-n>
+
+    if g:os == "Darwin"
+        "set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h18'
+        set guifont=Fira\ Mono:h18
+    elseif g:os == "Linux"
+        set guifont=Fira\ Mono\ 10
+    elseif g:os == "Windows"
+        set guifont=Fira_Mono:h12:cANSI
+    endif
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ auto commands
@@ -114,20 +127,13 @@ hi MatchParen ctermbg=blue ctermfg=white
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ key mapping settings
 let mapleader="\<space>"
-nmap <s-j> <c-w>j
-nmap <s-k> <c-w>k
-nmap <s-h> <c-w>h
-nmap <s-l> <c-w>l
-nmap <c-j> <c-w>j<c-w>_
-nmap <c-k> <c-w>k<c-w>_
 
-vmap <Leader>y "+y
-nmap <Leader>p "+p
-
-nnoremap <C-Tab>   :tabn<CR>
-nnoremap <C-S-Tab> :tabp<CR>
-inoremap <C-Tab>   <Esc>:tabn<CR>
-inoremap <C-S-Tab> <Esc>:tabp<CR>
+if has("gui_running")
+    nnoremap <C-Tab>   :tabn<CR>
+    nnoremap <C-S-Tab> :tabp<CR>
+    inoremap <C-Tab>   <Esc>:tabn<CR>
+    inoremap <C-S-Tab> <Esc>:tabp<CR>
+endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ShowTrailingWhitespace plugin
 hi ShowTrailingWhitespace ctermbg=Red guibg=Red

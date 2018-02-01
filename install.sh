@@ -1,28 +1,34 @@
 #!/bin/sh
 
+topdir=$(cd "$( dirname "$0" )" && pwd)
+pushd "${topdir}" &> /dev/null
+
 echo "Begin setup..."
 
-## setup tmux
-ln -f tmux.conf ~/.tmux.conf
-
 ## setup git
-ln -f gitconfig ~/.gitconfig
+ln -sf "${topdir}/gitconfig" ~/.gitconfig
 
 ## setup ssh
-ln -f sshconfig ~/.ssh/config
+ln -sf "${topdir}/sshconfig" ~/.ssh/config
+
+## setup tmux
+ln -sf "${topdir}/tmux.conf" ~/.tmux.conf
+mkdir -p ~/.tmux
+cp -r tmux/* ~/.tmux/
 
 ## setup vim
-ln -f vimrc ~/.vimrc
+ln -sf "${topdir}/vimrc" ~/.vimrc
 mkdir -p ~/.vim/favorites
 
 if type nvim &>/dev/null; then
     mkdir -p ~/.config/nvim
-    ln -f ~/.vimrc ~/.config/nvim/init.vim
-    cp -r colors autoload ~/.config/nvim/
+    ln -sf "${topdir}/vimrc" ~/.config/nvim/init.vim
+    cp -r vim/* ~/.config/nvim/
     nvim +PlugInstall +qall
 elif type vim | grep -v nvim &>/dev/null; then
-    cp -r colors autoload ~/.vim/
+    cp -r vim/* ~/.vim/
     vim +PlugInstall +qall
 fi
 
 echo "Done!"
+popd &> /dev/null
