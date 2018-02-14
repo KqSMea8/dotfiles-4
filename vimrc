@@ -31,7 +31,9 @@ Plug 'Tagbar'
 Plug 'Valloric/YouCompleteMe'
 
 """ programming related plugins
+Plug 'fatih/vim-go'
 
+""" other
 Plug 'christoomey/vim-tmux-navigator'
 
 """ plugin finish
@@ -204,8 +206,10 @@ nnoremap <leader>gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting indentLine plugin
 let g:indentLine_char='┆'
-let g:indentLine_color_term=239
 let g:indentLine_concealcursor='vc'
+let g:indentLine_color_term=239
+let g:indentLine_bgcolor_term = 202
+let g:indentLine_bgcolor_gui = '#FF5F00'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ctrlp plugin"
 let g:ctrlp_regexp = 1
@@ -234,4 +238,24 @@ let g:ag_prg="ag --ignore .git --ignore locale --ignore tests --vimgrep"
 """ setting lightline plugin
 set laststatus=2
 let g:lightline = {'colorscheme': 'solarized'}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" setting vim-go plugin
+let g:go_fmt_command = "goimports"
+let g:go_autodetect_gopath = 1
+let g:go_list_type = "quickfix"
+
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1
+
+augroup go
+  autocmd!
+
+  """ show by default 8 spaces for a tab
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=8 shiftwidth=8
+
+augroup END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
