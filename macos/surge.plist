@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>Label</key>
+            <string>xyz.ljjjustin.surge</string>
+        <key>EnvironmentVariables</key>
+            <dict>
+                <key>PATH</key>
+                <string>/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin</string>
+            </dict>
+        <key>Program</key>
+            <string>/Users/justin/Library/LaunchAgents/setupSurge.sh</string>
+        <key>RunAtLoad</key>
+            <true/>
+        <key>StandardOutPath</key>
+            <string>/tmp/surge.log</string>
+        <key>StandardErrorPath</key>
+            <string>/tmp/surge.log</string>
+    </dict>
+</plist>
