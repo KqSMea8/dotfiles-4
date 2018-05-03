@@ -6,6 +6,8 @@ filetype off
 call plug#begin('~/.vim/favorites')
 
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
 
 """ edit assistant plugins
 Plug 'Raimondi/delimitMate'
@@ -20,18 +22,23 @@ Plug 'Yggdroot/indentLine'
 
 """ file manange plugins
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTree' }
-Plug 'ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'rking/ag.vim'
+Plug 'dkprice/vim-easygrep'
 
 """ source code browse plugins
-Plug 'Tagbar'
+Plug 'majutsushi/tagbar'
+
+""" markdown
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 """ auto complete plugins
 Plug 'Valloric/YouCompleteMe'
 
 """ programming related plugins
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'tag': '*' }
 
 """ other
 Plug 'christoomey/vim-tmux-navigator'
@@ -99,11 +106,11 @@ if has("gui_running")
 
     if g:os == "Darwin"
         "set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline:h18'
-        set guifont=Fira\ Mono:h18
+        set guifont=Fira\ Mono\ Medium\ for\ Powerline:h18
     elseif g:os == "Linux"
-        set guifont=Fira\ Mono\ 10
+        set guifont=Fira\ Mono\ 21
     elseif g:os == "Windows"
-        set guifont=Fira_Mono:h12:cANSI
+        set guifont=Fira_Mono:h21:cANSI
     endif
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -118,7 +125,8 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting grep command
 if executable('ag')
-    set grepprg=ag\ --nogroup\ --nocolor
+    set grepprg=ag\ --nogroup\ --nocolor\ --vimgrep\ $*
+    set grepformat=%f:%l:%c:%m
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting line number
@@ -144,7 +152,7 @@ let g:DeleteTrailingWhitespace=1
 let g:DeleteTrailingWhitespace_Action = 'delete'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting tagbar plugin
-let g:tagbar_width = 28
+let g:tagbar_width = 25
 let g:tagbar_autoclose = 0
 let g:tagbar_sort = 0
 let g:tagbar_compact = 1
@@ -180,7 +188,7 @@ let g:tagbar_type_go = {
 nnoremap <leader>l :TagbarToggle<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting NRED file explorer
-let NERDTreeWinSize = 28
+let NERDTreeWinSize = 25
 let NERDTreeWinPos = "left"
 let NERDTreeIgnore = ['\.pyc$']
 
@@ -216,7 +224,7 @@ let g:ctrlp_regexp = 1
 let g:ctrlp_working_path_mode  = 'ra'
 if executable('ag')
     let g:ctrlp_use_caching=0
-    let g:ctrlp_user_command='ag %s -l --depth 5 --nocolor --nogroup --hidden --ignore .git --ignore .DS_Store -g ""'
+    let g:ctrlp_user_command='ag %s -l --depth 5 --nocolor --nogroup --hidden --ignore .git --ignore vendor --ignore .DS_Store -g ""'
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ctrlsf plugin"
@@ -233,7 +241,7 @@ vmap <leader>f <Plug>CtrlSFVwordPath
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting ag plugin
 let g:ag_working_path_mode="r"
-let g:ag_prg="ag --ignore .git --ignore locale --ignore tests --vimgrep"
+let g:ag_prg="ag --vimgrep --ignore locale --ignore test*"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting lightline plugin
 set laststatus=2
@@ -241,7 +249,8 @@ let g:lightline = {'colorscheme': 'solarized'}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting vim-go plugin
 let g:go_fmt_command = "goimports"
-let g:go_autodetect_gopath = 1
+
+let g:go_term_mode = "split"
 let g:go_list_type = "quickfix"
 
 let g:go_highlight_types = 1
@@ -253,9 +262,16 @@ let g:go_highlight_generate_tags = 1
 
 augroup go
   autocmd!
-
   """ show by default 8 spaces for a tab
-  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=8 shiftwidth=8
-
+  autocmd FileType go setlocal noexpandtab tabstop=4 shiftwidth=4
 augroup END
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" setting markdown plugins
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_emphasis_multiline = 0
+let g:vim_markdown_new_list_item_indent = 2
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" setting easygrep plugin
+let g:EasyGrepCommand=1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
