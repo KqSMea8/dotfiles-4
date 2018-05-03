@@ -7,12 +7,12 @@ call plug#begin('~/.vim/favorites')
 
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
+
+Plug 'sheerun/vim-polyglot'
 
 """ edit assistant plugins
 Plug 'Raimondi/delimitMate'
-Plug 'ShowTrailingWhitespace'
-Plug 'DeleteTrailingWhitespace'
+Plug 'ntpeters/vim-better-whitespace'
 
 """ syntax highlight plugins
 Plug 'Yggdroot/indentLine'
@@ -145,11 +145,11 @@ if has("gui_running")
     inoremap <C-S-Tab> <Esc>:tabp<CR>
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""" setting ShowTrailingWhitespace plugin
-hi ShowTrailingWhitespace ctermbg=Red guibg=Red
-""" setting DeleteTrailingWhitespace plugin
-let g:DeleteTrailingWhitespace=1
-let g:DeleteTrailingWhitespace_Action = 'delete'
+""" setting better-whitespace plugin
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+
+hi ExtraWhitespace ctermbg=Red guibg=Red
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """ setting tagbar plugin
 let g:tagbar_width = 25
