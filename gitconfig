@@ -11,3 +11,5 @@
 	br = branch
 	cm = commit
 	cp = cherry-pick
+[push]
+	default = simple
