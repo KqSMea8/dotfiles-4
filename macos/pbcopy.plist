@@ -3,7 +3,7 @@
 <plist version="1.0">
     <dict>
         <key>Label</key>
-        <string>localhost.pbcopy</string>
+            <string>localhost.pbcopy</string>
         <key>ProgramArguments</key>
         <array>
             <string>/usr/bin/pbcopy</string>
@@ -18,7 +18,7 @@
             <key>Listeners</key>
             <dict>
                 <key>SockServiceName</key>
-                <string>2224</string>
+                <string>22222</string>
                 <key>SockNodeName</key>
                 <string>127.0.0.1</string>
             </dict>

@@ -1,0 +1,19 @@
+function get_pass() {
+    SECRET_KEY=xxxxxxxxxxxxxxxxxxx
+    local dynamic=$(oathtool --totp --base32 -d6 $SECRET_KEY)
+    echo -n "test${dynamic}"
+}
+
+function portal() {
+    local password=$(get_pass)
+    sshpass -p "${password}" ssh jiajun@server
+}
+
+function fap() {
+    get_pass | pbcopy
+}
+
+function pcp() {
+    local password=$(get_pass)
+    sshpass -p "${password}" rsync --progress -av -e ssh $@ jiajun@server:~
+}

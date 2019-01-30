@@ -1,0 +1,5 @@
+device=$(ls /dev/cu.* | grep usbserial | head -1)
+
+if [ -n "${device}" ]; then
+    alias sserial="screen -L ${device} 9600"
+fi

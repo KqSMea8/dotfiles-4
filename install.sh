@@ -5,6 +5,11 @@ pushd "${topdir}" &> /dev/null
 
 echo "Begin setup..."
 
+## setup shell and network proxy
+mkdir -p ~/.config
+ln -sf "${topdir}/shell" ~/.config/
+ln -sf "${topdir}/proxy" ~/.config/
+
 ## setup git
 ln -sf "${topdir}/gitconfig" ~/.gitconfig
 
@@ -28,6 +33,13 @@ if type nvim &>/dev/null; then
 elif type vim | grep -v nvim &>/dev/null; then
     cp -r vim/* ~/.vim/
     vim +PlugInstall +qall
+fi
+
+## setup MacOS related configs
+if [ "Darwin" = "$(uname)" ]; then
+    pushd "${topdir}/macos" &> /dev/null
+    ./setup.sh
+    popd &> /dev/null
 fi
 
 echo "Done!"

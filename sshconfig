@@ -7,15 +7,19 @@ Compression yes
 
 
 IdentityFile ~/.ssh/id_rsa
-IdentityFile ~/.ssh/portal.key
-IdentityFile ~/.ssh/devops.key
-IdentityFile ~/.ssh/mirror.key
 
 Host review.polex.io
     KexAlgorithms +diffie-hellman-group1-sha1
 
 Host *
     ControlMaster auto
-    ControlPath ~/.ssh/master-%r@%h:%p
-    ControlPersist 600
-    RemoteForward 20024 127.0.0.1:2224
+    ControlPersist 48h
+    ControlPath ~/.ssh/sock_%r@%h_%p
+    RemoteForward 22222 127.0.0.1:22222
+#RemoteForward /tmp/clip.sock /tmp/clip.sock
+
+Host *.mnet2.com
+    ProxyCommand corkscrew 127.0.0.1 12679 %h %p
+
+Host 150.109.59.236
+    ProxyCommand corkscrew web-proxy.oa.com 8080 %h %p

@@ -1,0 +1,6 @@
+function tmux() {
+    local session=jiajun
+    tmux=`/usr/bin/which tmux`
+
+    ${tmux} -CC attach -t ${session} || ${tmux} -CC new -s ${session}
+}

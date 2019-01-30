@@ -1,0 +1,5 @@
+if ! pgrep aria2c > /dev/null; then
+    pushd ~/.aria2/ > /dev/null
+    aria2c -c ./aria2.conf
+    popd > /dev/null
+fi

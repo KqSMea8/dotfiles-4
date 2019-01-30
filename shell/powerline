@@ -1,0 +1,8 @@
+# powerline prompt
+pgrep -qf powerline-daemon
+if [ $? -ne 0 ]; then
+    powerline-daemon -q
+fi
+POWERLINE_BASH_CONTINUATION=1
+POWERLINE_BASH_SELECT=1
+source $(pip show powerline-status | awk '/Location:/{print $2 "/powerline/bindings/bash/powerline.sh"}')

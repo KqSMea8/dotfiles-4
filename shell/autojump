@@ -1,0 +1,8 @@
+#activate autojump
+
+postfix=$(basename $SHELL)
+config="/usr/local/share/autojump/autojump.${postfix}"
+
+if [ -f "${config}" ]; then
+    source "${config}"
+fi

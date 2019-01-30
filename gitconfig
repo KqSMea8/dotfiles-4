@@ -1,6 +1,6 @@
 [user]
-	name = Jiajun Liu
-	email = iamljj@gmail.com
+	name = liujjliu
+	email = liujjliu@tencent.com
 [core]
 	editor = vim
 [http]
@@ -13,3 +13,5 @@
 	cp = cherry-pick
 [push]
 	default = simple
+[http "http://git.code.oa.com"]
+	proxy = http://127.0.0.1:12639

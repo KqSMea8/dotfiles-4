@@ -1,0 +1,6 @@
+export GOPATH=~/.golang
+
+# add bin dir to PATH environment variable
+if ! echo $PATH | grep -q '.golang/bin'; then
+    export PATH=${GOPATH}/bin:$PATH
+fi

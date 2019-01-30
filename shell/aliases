@@ -1,0 +1,6 @@
+# command alias
+alias ll='ls -lh'
+alias la='ls -la'
+
+alias rm='rm -i'
+alias mv='mv -i'
